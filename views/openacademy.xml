@@ -1,0 +1,45 @@
+<odoo>
+
+        <!--ir.actions.act.windows es propio de odoo para identificar que se viene un ejecucion de ventana-->
+        <!--
+            - Accion que tiene nombre Courses
+            - Conecta con la DB openacademy.course
+            - Sera tipo arbol y formulario la vista
+            - Tendra ayuda help
+        -->
+        <record model="ir.actions.act_window" id="course_list_action">
+            <field name="name">Courses</field>
+            <field name="res_model">openacademy.course</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create the first course
+                </p>
+            </field>
+        </record>
+
+
+
+        <!-- top level menu: no parent -->
+        <!--Primer menu significa que la opcion Open Academy la aplicacion estara en la ventana principal junto ajustes y aplicaciones-->
+        <menuitem id="main_openacademy_menu" name="Open Academy"/>
+        <!-- A first level in the left side menu is needed
+            before using action= attribute -->
+
+
+
+        <!--Este segundo es al dar click en el menuitem de arriba ya que es un hijo de ese-->
+        <menuitem id="openacademy_menu" name="Open Academy" parent="main_openacademy_menu"/>
+
+
+
+
+        <!--
+            Ojo solo este menuitem esta enlazado al record de arriba al course-action-list-view o a la accion de arriba
+            por lo tanto ejecutara la vista o la pantalla de coursos y se podra agregar un curso nuevo 
+        -->
+        <!-- the following menuitem should appear *after*
+            its parent openacademy_menu and *after* its
+            action course_list_action -->
+        <menuitem id="courses_menu" name="Courses" parent="openacademy_menu" action="course_list_action"/>
+
+</odoo>
